@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 export class LoginComponent {
 
   form = new FormGroup({
-    email: new FormControl(null, { validators: Validators.required }),
+    email: new FormControl(null, { validators: Validators.compose([Validators.required, Validators.email]) }),
     password: new FormControl(null, { validators: Validators.required }),
   });
 }
