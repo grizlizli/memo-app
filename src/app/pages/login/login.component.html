@@ -16,4 +16,6 @@
       <mat-error>Password is <strong>required</strong></mat-error>
     }
   </mat-form-field>
+
+  <button mat-flat-button [disabled]="form.invalid">Login</button>
 </form>
