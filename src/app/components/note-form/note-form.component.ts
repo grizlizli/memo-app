@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-note-form',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -13,12 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatButtonModule
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './note-form.component.html',
+  styleUrl: './note-form.component.scss'
 })
-export class LoginComponent {
+export class NoteFormComponent {
   readonly form = new FormGroup({
-    email: new FormControl(null, { validators: Validators.compose([Validators.required, Validators.email]) }),
-    password: new FormControl(null, { validators: Validators.required }),
+    title: new FormControl(null, { validators: Validators.required }),
+    content: new FormControl(null, { validators: Validators.compose([Validators.required, Validators.minLength(3)]) }),
   });
 }
