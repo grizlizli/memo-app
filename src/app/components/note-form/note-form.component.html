@@ -15,5 +15,9 @@
     }
   </mat-form-field>
 
-  <button mat-flat-button class="full-width" [disabled]="computedForm().invalid || computedForm().pristine" (click)="false">Save</button>
+  <button mat-flat-button class="full-width"
+    [disabled]="computedForm().invalid || computedForm().pristine"
+    (click)="save.emit(computedForm().value)">
+    Save
+  </button>
 </form>

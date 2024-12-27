@@ -1,9 +1,14 @@
-import { Component, computed, effect, input } from '@angular/core';
+import { Component, computed, effect, input, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Note } from '../../interfaces/note';
+
+export interface NoteFormData {
+  title: string | null;
+  content: string | null;
+}
 
 @Component({
   selector: 'app-note-form',
@@ -24,6 +29,7 @@ export class NoteFormComponent {
   });
 
   readonly note = input<Note | null>();
+  readonly save = output<Partial<NoteFormData>>();
 
   readonly computedForm = computed(() => {
     const note = this.note();
