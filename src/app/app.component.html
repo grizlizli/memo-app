@@ -1,9 +1,9 @@
 <mat-toolbar>
-  <span>{{ title }}</span>
+  <span routerLink="/notes">{{ title }}</span>
 
   <span class="spacer"></span>
 
-  <button mat-icon-button routerLink="/notes/new">
+  <button mat-icon-button routerLink="/notes/new" [disabled]="disableNewNoteButton()">
     <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
