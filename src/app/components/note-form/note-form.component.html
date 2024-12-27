@@ -1,19 +1,19 @@
-<form [formGroup]="form" class="form">
+<form [formGroup]="computedForm()" class="form">
   <mat-form-field class="full-width">
     <mat-label>Title</mat-label>
     <input matInput formControlName="title" type="text" placeholder="What a great day">
-    @if (form.controls.title.hasError('required')) {
+    @if (computedForm().controls.title.hasError('required')) {
       <mat-error>Title is <strong>required</strong></mat-error>
     }
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>Note</mat-label>
-    <textarea matInput formControlName="content" placeholder="I went to the nice restaurant and ate sushi with my friends"></textarea>
-    @if (form.controls.title.hasError('required')) {
+    <textarea matInput formControlName="content" rows="8" placeholder="I went to the nice restaurant and ate sushi with my friends"></textarea>
+    @if (computedForm().controls.title.hasError('required')) {
       <mat-error>Note is <strong>required</strong></mat-error>
     }
   </mat-form-field>
 
-  <button mat-flat-button class="full-width" [disabled]="form.invalid" (click)="false">Save</button>
+  <button mat-flat-button class="full-width" [disabled]="computedForm().invalid || computedForm().pristine" (click)="false">Save</button>
 </form>

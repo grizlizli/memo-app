@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotesListComponent } from './pages/notes-list/notes-list.component';
 import { NoteDetailsComponent } from './pages/note-details/note-details.component';
 import { CreateNoteComponent } from './pages/create-note/create-note.component';
+import { noteResolver } from './resolvers/note.resolver';
 
 export const routes: Routes = [{
   path: 'auth/login',
@@ -15,7 +16,10 @@ export const routes: Routes = [{
   loadComponent: () => CreateNoteComponent
 }, {
   path: 'notes/:id',
-  loadComponent: () => NoteDetailsComponent
+  loadComponent: () => NoteDetailsComponent,
+  resolve: {
+    note: noteResolver
+  }
 }, {
   path: '**',
   redirectTo: '/notes'

@@ -17,4 +17,8 @@ export class NotesService {
     return this.#notes.asReadonly();
   }
 
+  getNoteById(id: string) {
+    return this.apiService.get<Note>(`notes/${id}`);
+  }
+
 }
