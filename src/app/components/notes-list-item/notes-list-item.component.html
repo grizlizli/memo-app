@@ -5,7 +5,8 @@
   <mat-card-content>
     <p class="truncate">{{ note().content }}</p>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions align="end">
+    <button mat-button (click)="remove.emit(note().id)">Remove</button>
     <button mat-button (click)="readMore.emit(note().id)">Read more</button>
   </mat-card-actions>
 </mat-card>

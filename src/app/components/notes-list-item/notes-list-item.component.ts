@@ -13,4 +13,5 @@ import { MatButtonModule } from '@angular/material/button';
 export class NotesListItemComponent {
   readonly note = input.required<Note>();
   readonly readMore = output<string>();
+  readonly remove = output<string>();
 }

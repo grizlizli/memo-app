@@ -30,8 +30,14 @@ export class AppComponent {
   readonly disableNewNoteButton = computed(() => {
     const currentRoute = this.currentRoute();
 
-    return currentRoute === '/auth/login' || currentRoute === '/notes/new';
-  })
+    return currentRoute === '/notes/new';
+  });
+
+  readonly showNewNoteButton = computed(() => {
+    const currentRoute = this.currentRoute();
+
+    return currentRoute !== '/auth/login';
+  });
 
   readonly title = 'MemoApp';
 }

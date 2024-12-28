@@ -1,10 +1,13 @@
-form {
-  margin: 30% auto;
-  display: block;
-  width:500px;
-  text-align: center;
+.intro {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+}
 
-  mat-form-field {
-    display: block
-  }
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-top: 4rem;
 }

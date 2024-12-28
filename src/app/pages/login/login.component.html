@@ -1,21 +1,30 @@
-<form [formGroup]="form">
-  <mat-form-field>
-    <mat-label>Your email address:</mat-label>
-    <input matInput formControlName="email" type="email" placeholder="john.doe@example.com">
-    @if (form.controls.email.hasError('required')) {
-      <mat-error>Email is <strong>required</strong></mat-error>
-    }
-    @if (form.controls.email.hasError('email')) {
-      <mat-error>Email is not in the right format</mat-error>
-    }
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Your password:</mat-label>
-    <input matInput formControlName="password" type="password" placeholder="********">
-    @if (form.controls.password.hasError('required')) {
-      <mat-error>Password is <strong>required</strong></mat-error>
-    }
-  </mat-form-field>
+<div class="content">
+  <div class="intro">
+    <h1>Welcome to <strong>MemoApp</strong></h1>
+    <p>
+      Your thoughts, ideas, and to-dos deserve a home that's simple, secure, and always at your fingertips. Log in to access your notes and stay organized effortlessly. Whether you're brainstorming, planning, or keeping track of everyday moments, we've got you covered.
+    </p>
+  </div>
 
-  <button mat-flat-button [disabled]="form.invalid">Login</button>
-</form>
+  <form [formGroup]="form" class="form">
+    <mat-form-field class="full-width">
+      <mat-label>Your email address:</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="john.doe@example.com">
+      @if (form.controls.email.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+      }
+      @if (form.controls.email.hasError('email')) {
+        <mat-error>Email is not in the right format</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Your password:</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="********">
+      @if (form.controls.password.hasError('required')) {
+        <mat-error>Password is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-flat-button class="full-width" [disabled]="form.invalid" (click)="login()">Login</button>
+  </form>
+</div>

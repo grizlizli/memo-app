@@ -3,9 +3,13 @@
 
   <span class="spacer"></span>
 
-  <button mat-icon-button routerLink="/notes/new" [disabled]="disableNewNoteButton()">
-    <mat-icon>add</mat-icon>
-  </button>
+  @if (showNewNoteButton()) {
+    <button mat-button extended routerLink="/notes/new" [disabled]="disableNewNoteButton()">
+      <mat-icon>add</mat-icon>
+      New note
+    </button>
+  }
+
 </mat-toolbar>
 <main>
   <router-outlet />

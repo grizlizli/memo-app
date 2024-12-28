@@ -1,7 +1,7 @@
 <div class="row">
   @for(note of notes(); track note.id) {
   <div class="column">
-      <app-notes-list-item class="card" [note]="note" (readMore)="navigateToNoteDetailsPage($event)"/>
+      <app-notes-list-item class="card" [note]="note" (readMore)="navigateToNoteDetailsPage($event)" (remove)="removeNote($event)"/>
   </div>
   }
   @empty {
