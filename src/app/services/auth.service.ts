@@ -11,13 +11,11 @@ export interface AuthenticationResponse {
   token: string;
 }
 
-const AUTH_TOKEN_STORAGE_KEY = 'AUTH_TOKEN';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  #token: string | null = localStorage.getItem(AUTH_TOKEN_STORAGE_KEY) || null;
+  #token: string | null = null;
   private readonly apiService = inject(ApiService);
 
   login(payload: LoginPayload) {
@@ -33,8 +31,5 @@ export class AuthService {
 
   private setAuthToken(token: string | null) {
     this.#token = token;
-    if (token) {
-      localStorage.setItem(AUTH_TOKEN_STORAGE_KEY, token);
-    }
   }
 }
