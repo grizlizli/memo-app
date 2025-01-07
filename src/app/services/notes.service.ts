@@ -16,6 +16,7 @@ export class NotesService {
   }
 
   getNotes(): Signal<Note[]> {
+    // returning a notes signal as a store. migth be overkill :)
     this.apiService.get<Note[]>('notes')
       .subscribe((notes: Note[]) => this.#notes.set(notes));
 
