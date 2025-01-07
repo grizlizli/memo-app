@@ -1,10 +1,15 @@
 <div class="row">
-  @for(note of notes(); track note.id) {
-  <div class="column">
-      <app-notes-list-item class="card" [note]="note" (readMore)="navigateToNoteDetailsPage($event)" (remove)="removeNote($event)"/>
-  </div>
+  @if (error()) {
+    <p>{{error()}}</p>
   }
-  @empty {
-    <p>No notes available. <a href="/notes/new">Create new one</a>.</p>
+  @else {
+    @for(note of notes(); track note.id) {
+      <div class="column">
+          <app-notes-list-item class="card" [note]="note" (readMore)="navigateToNoteDetailsPage($event)" (remove)="removeNote($event)"/>
+      </div>
+      }
+      @empty {
+        <p>No notes available. <a href="/notes/new">Create new one</a>.</p>
+      }
   }
 </div>

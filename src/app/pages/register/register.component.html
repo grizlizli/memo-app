@@ -1,0 +1,28 @@
+<form [formGroup]="form" class="form">
+  <mat-form-field class="full-width">
+    <mat-label>Your full name:</mat-label>
+    <input matInput formControlName="fullName" type="text" placeholder="John Doe">
+    @if (form.controls.fullName.hasError('required')) {
+      <mat-error>Full name is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Your email address:</mat-label>
+    <input matInput formControlName="email" type="email" placeholder="john.doe@example.com">
+    @if (form.controls.email.hasError('required')) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+    }
+    @if (form.controls.email.hasError('email')) {
+      <mat-error>Email is not in the right format</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Your password:</mat-label>
+    <input matInput formControlName="password" type="password" placeholder="********">
+    @if (form.controls.password.hasError('required')) {
+      <mat-error>Password is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+
+  <button mat-flat-button class="full-width" [disabled]="form.invalid" (click)="register()">Register</button>
+</form>

@@ -19,6 +19,7 @@ export class NotesListComponent {
   private readonly snackBar = inject(MatSnackBar);
   private readonly destroyRef = inject(DestroyRef);
   readonly notes: Signal<Note[]> = this.notesService.getNotes();
+  readonly error: Signal<string | null> = this.notesService.getErrorLoadingNotes();
 
   navigateToNoteDetailsPage(id: string) {
     this.router.navigate([`/notes/${id}`]);

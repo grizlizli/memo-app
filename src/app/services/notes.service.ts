@@ -10,15 +10,24 @@ export class NotesService {
   private readonly apiService = inject(ApiService);
 
   readonly #notes = signal<Note[]>([]);
+  readonly #errorLoadingNotes = signal<null | string>(null);
+
+  getErrorLoadingNotes(): Signal<string | null> {
+    return this.#errorLoadingNotes.asReadonly();
+  }
 
   createNote(note: Partial<Note>) {
     return this.apiService.post('notes', note);
   }
 
   getNotes(): Signal<Note[]> {
+    this.#errorLoadingNotes.set(null);
     // returning a notes signal as a store. migth be overkill :)
     this.apiService.get<Note[]>('notes')
-      .subscribe((notes: Note[]) => this.#notes.set(notes));
+      .subscribe({
+        next: (notes: Note[]) => this.#notes.set(notes),
+        error: (_error) => this.#errorLoadingNotes.set('Error loading notes.')
+      });
 
     return this.#notes.asReadonly();
   }
